@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Violence Detection UI/UX Brainstorm</title>
+  <style>
+    :root {
+      --bg: #f4f6f8;
+      --panel: #ffffff;
+      --ink: #17212b;
+      --muted: #637083;
+      --line: #d8dee6;
+      --blue: #2563eb;
+      --green: #15803d;
+      --red: #dc2626;
+      --amber: #b45309;
+      --charcoal: #111827;
+      --soft: #eef2f7;
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.45;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      border-bottom: 1px solid var(--line);
+      background: rgba(244, 246, 248, 0.94);
+      backdrop-filter: blur(10px);
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 14px 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .mark {
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+      color: #fff;
+      font-weight: 700;
+      background: var(--charcoal);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 19px;
+      line-height: 1.2;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    nav {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    nav a {
+      padding: 7px 10px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 13px;
+      background: #fff;
+    }
+
+    main {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 24px 20px 64px;
+    }
+
+    section {
+      margin: 0 0 22px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      font-size: 18px;
+    }
+
+    h3 {
+      margin: 0 0 8px;
+      font-size: 15px;
+    }
+
+    p {
+      margin: 0 0 10px;
+    }
+
+    ul {
+      margin: 8px 0 0;
+      padding-left: 18px;
+    }
+
+    li {
+      margin: 6px 0;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .two {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .item {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 14px;
+      background: #fff;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin: 0 6px 8px 0;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: var(--soft);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .tag.red {
+      background: #fee2e2;
+      color: var(--red);
+    }
+
+    .tag.green {
+      background: #dcfce7;
+      color: var(--green);
+    }
+
+    .tag.amber {
+      background: #fef3c7;
+      color: var(--amber);
+    }
+
+    .mock {
+      display: grid;
+      gap: 10px;
+      min-height: 190px;
+      padding: 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: var(--radius);
+      background: #f8fafc;
+    }
+
+    .mock.dark {
+      background: #151923;
+      color: #f8fafc;
+      border-color: #303846;
+    }
+
+    .mock.ops {
+      background: #fbfbf8;
+      border-color: #d6d3c8;
+    }
+
+    .mock-row {
+      display: grid;
+      grid-template-columns: 1.4fr 0.8fr;
+      gap: 8px;
+    }
+
+    .video {
+      min-height: 110px;
+      border-radius: 6px;
+      background: linear-gradient(135deg, #202632, #485363);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .video::after {
+      content: "Live camera";
+      position: absolute;
+      left: 10px;
+      bottom: 10px;
+      color: #fff;
+      font-size: 12px;
+    }
+
+    .rail, .mini {
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.75);
+      border: 1px solid rgba(148, 163, 184, 0.55);
+    }
+
+    .dark .rail,
+    .dark .mini {
+      background: #202838;
+      border-color: #3b4658;
+    }
+
+    .ops .rail,
+    .ops .mini {
+      background: #fff;
+      border-color: #d6d3c8;
+    }
+
+    .rail {
+      min-height: 110px;
+    }
+
+    .mini {
+      min-height: 34px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      height: 34px;
+      min-width: 90px;
+      border-radius: 6px;
+      background: var(--charcoal);
+    }
+
+    .button.blue {
+      background: var(--blue);
+    }
+
+    .button.red {
+      background: var(--red);
+    }
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+      font-size: 13px;
+    }
+
+    .table th,
+    .table td {
+      padding: 9px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .table th {
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .checklist label {
+      display: flex;
+      gap: 9px;
+      align-items: flex-start;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      margin-top: 2px;
+      accent-color: var(--blue);
+    }
+
+    .note {
+      border-left: 4px solid var(--blue);
+      padding: 12px 14px;
+      background: #eff6ff;
+      border-radius: 6px;
+      color: #1e3a8a;
+    }
+
+    @media (max-width: 880px) {
+      .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      nav {
+        justify-content: flex-start;
+      }
+
+      .grid,
+      .two {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <div class="brand">
+        <div class="mark">VD</div>
+        <div>
+          <h1>Violence Detection UI/UX Brainstorm</h1>
+          <div class="subtitle">Canlı tespit arayüzü için karar taslağı ve teknik spec</div>
+        </div>
+      </div>
+      <nav aria-label="Bölümler">
+        <a href="#pain">Sorunlar</a>
+        <a href="#directions">Tema</a>
+        <a href="#layout">Akış</a>
+        <a href="#report-crash">Rapor Crash</a>
+        <a href="#acceptance">Kabul</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="north-star">
+      <span class="tag green">Hedef</span>
+      <span class="tag">Tkinter uygulaması</span>
+      <span class="tag">Webcam + RTSP</span>
+      <h2>North Star</h2>
+      <p>Arayüz bir güvenlik operatör paneli gibi hissettirmeli: sakin, okunabilir, hızlı, hata durumlarında kontrollü ve gereksiz süslerden uzak.</p>
+      <p class="note">İlk ekranın ana işi canlı görüntüyü, tespit sonucunu, güven skorunu, FPS/gecikmeyi ve olay/rapor aksiyonlarını net göstermek. Kullanıcı hiçbir şeyi aramak zorunda kalmamalı.</p>
+    </section>
+
+    <section id="pain">
+      <h2>Mevcut UI Sorunları</h2>
+      <div class="grid">
+        <div class="item">
+          <h3>Görsel Dil</h3>
+          <ul>
+            <li>Tek renkli koyu mavi tema yorucu ve eski hissettiriyor.</li>
+            <li>Butonlar fazla büyük, ekranın çalışma alanını yiyor.</li>
+            <li>Uyarı durumu ile normal durum arasındaki hiyerarşi yeterince net değil.</li>
+          </ul>
+        </div>
+        <div class="item">
+          <h3>Kullanılabilirlik</h3>
+          <ul>
+            <li>Küçük ekranlarda aşağıdaki alanlara erişim kaybolabiliyor.</li>
+            <li>Başlat, durdur, test modu, büyüt ve rapor aynı ağırlıkta görünüyor.</li>
+            <li>Rapor üretme akışında kullanıcıya yeterli durum bilgisi verilmiyor.</li>
+          </ul>
+        </div>
+        <div class="item">
+          <h3>Performans Algısı</h3>
+          <ul>
+            <li>FPS düşükse arayüz neden yavaşladığını anlatmıyor.</li>
+            <li>Tespit, kamera, model ve alarm durumları ayrı ayrı görünmüyor.</li>
+            <li>Loglar terminalde kalıyor, UI içinde özetlenmiyor.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="directions">
+      <h2>Tema Yönleri</h2>
+      <div class="grid">
+        <div class="item">
+          <span class="tag green">Önerilen</span>
+          <h3>Control Room Light</h3>
+          <div class="mock">
+            <div class="mock-row">
+              <div class="video"></div>
+              <div class="rail"></div>
+            </div>
+            <div class="actions">
+              <div class="button blue"></div>
+              <div class="button"></div>
+              <div class="button red"></div>
+            </div>
+            <div class="mini"></div>
+          </div>
+          <p>Açık zemin, net kontrast, düşük görsel gürültü. Uzun kullanım için en güvenli yön.</p>
+        </div>
+        <div class="item">
+          <span class="tag">Alternatif</span>
+          <h3>Incident Console Dark</h3>
+          <div class="mock dark">
+            <div class="mock-row">
+              <div class="video"></div>
+              <div class="rail"></div>
+            </div>
+            <div class="actions">
+              <div class="button blue"></div>
+              <div class="button"></div>
+              <div class="button red"></div>
+            </div>
+            <div class="mini"></div>
+          </div>
+          <p>Daha modern ve dramatik. Kamera görüntüsü öne çıkar, ama dikkatli kullanılmazsa mevcut sorunu tekrarlar.</p>
+        </div>
+        <div class="item">
+          <span class="tag">Alternatif</span>
+          <h3>Institutional Ops</h3>
+          <div class="mock ops">
+            <div class="mock-row">
+              <div class="video"></div>
+              <div class="rail"></div>
+            </div>
+            <div class="actions">
+              <div class="button blue"></div>
+              <div class="button"></div>
+              <div class="button red"></div>
+            </div>
+            <div class="mini"></div>
+          </div>
+          <p>Akademik/proje sunumu için daha resmi. Raporlama ve olay geçmişi güçlü görünür.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="layout">
+      <h2>Önerilen Uygulama Akışı</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Alan</th>
+            <th>Yeni davranış</th>
+            <th>Neden</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Canlı görüntü</td>
+            <td>Ekranın merkezi, sabit oranlı ve temiz durum etiketiyle.</td>
+            <td>Kullanıcının ana işi görüntüyü izlemek.</td>
+          </tr>
+          <tr>
+            <td>Durum paneli</td>
+            <td>Sonuç, güven, FPS, gecikme, hareket ve model durumu ayrı satırlarda.</td>
+            <td>Performans veya model sorunları hızlı anlaşılır.</td>
+          </tr>
+          <tr>
+            <td>Aksiyonlar</td>
+            <td>Başlat/durdur birincil, test modu ve rapor ikincil aksiyon.</td>
+            <td>Kritik komutlar görsel olarak ayrılır.</td>
+          </tr>
+          <tr>
+            <td>Olay geçmişi</td>
+            <td>Son 5 olay küçük liste olarak UI içinde görünür.</td>
+            <td>Rapor oluşturmadan önce veri var mı anlaşılır.</td>
+          </tr>
+          <tr>
+            <td>Rapor</td>
+            <td>Buton disabled/loading/error states ile çalışır.</td>
+            <td>Crash yerine kontrollü geri bildirim.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="report-crash">
+      <span class="tag red">Spec içine dahil</span>
+      <h2>Rapor Oluştur Crash Fix Spec</h2>
+      <div class="grid two">
+        <div class="item">
+          <h3>Muhtemel crash kaynakları</h3>
+          <ul>
+            <li>Hiç şiddet olayı yokken `ReportGenerator.generate()` exception fırlatıyor.</li>
+            <li>Screenshot dosyası silinmiş ya da path bozuk olabilir.</li>
+            <li>PDF font/logo/image yükleme hatası UI thread üzerinde patlayabilir.</li>
+            <li>SQLite tablo veya kolon durumu beklenenden farklı olabilir.</li>
+            <li>Rapor üretimi sırasında butona tekrar tekrar basılabilir.</li>
+          </ul>
+        </div>
+        <div class="item">
+          <h3>Yeni davranış</h3>
+          <ul>
+            <li>Olay yoksa crash yok: “Rapor için kayıtlı şiddet olayı yok” mesajı.</li>
+            <li>Eksik screenshot varsa PDF yine üretilir, satırda “görüntü bulunamadı” yazar.</li>
+            <li>Rapor oluşturulurken buton geçici olarak devre dışı kalır.</li>
+            <li>Başarılı raporda dosya yolu ve olay sayısı gösterilir.</li>
+            <li>Hata olursa tek satırlık kullanıcı mesajı ve terminalde detaylı log olur.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="acceptance">
+      <h2>Kabul Kriterleri</h2>
+      <div class="checklist">
+        <label><input type="checkbox"> UI küçük ekranda scrollbar ile tamamen erişilebilir.</label>
+        <label><input type="checkbox"> Canlı görüntü, sonuç ve temel metrikler ilk bakışta okunur.</label>
+        <label><input type="checkbox"> Şiddet algılandığında uyarı güçlü ama arayüzü kilitlemeyen bir durum olarak görünür.</label>
+        <label><input type="checkbox"> FPS düşüşü için detection interval ve UI update davranışı ayarlanabilir kalır.</label>
+        <label><input type="checkbox"> Rapor butonu kayıt yokken, eksik screenshot varken ve DB hatasında crash üretmez.</label>
+        <label><input type="checkbox"> Rapor üretimi sırasında butona tekrar basmak yeni işlem başlatmaz.</label>
+        <label><input type="checkbox"> Tema tek hue ailesine sıkışmaz; açık zemin, nötr çizgiler, kırmızı/yeşil durum renkleri dengeli kullanılır.</label>
+      </div>
+    </section>
+
+    <section id="next">
+      <h2>Bir Sonraki Sprint</h2>
+      <p>Önerilen sıra: önce rapor crash fix, sonra yeni layout iskeleti, sonra tema polish ve olay geçmişi. Bu sıra hem kırılganlığı azaltır hem de UI yenilemesini daha kontrollü yapar.</p>
+    </section>
+  </main>
+</body>
+</html>
